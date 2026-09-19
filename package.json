@@ -1,13 +1,20 @@
 {
   "name": "secguard-cli",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "CLI educacional em TypeScript para identificar arquivos potencialmente sensíveis em diretórios locais.",
+  "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node src/index.ts",
+    "check": "tsc --noEmit",
+    "test": "tsc --noEmit"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "security",
+    "cli",
+    "typescript",
+    "developer-tools"
+  ],
+  "author": "Rodrigo Otavio",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
