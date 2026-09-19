@@ -1,24 +1,50 @@
-SecGuard-CLI 🛡️
+# SecGuard CLI 🛡️
 
-Uma interface de linha de comando (CLI) simples e eficiente desenvolvida em TypeScript e Node.js para automatizar auditorias de segurança superficiais em diretórios locais.
+CLI educacional em TypeScript e Node.js para fazer uma verificação superficial de arquivos potencialmente sensíveis em um diretório local.
 
-O projeto analisa estruturas de pastas em busca de potenciais riscos de exposição de dados, identificando arquivos críticos que não deveriam estar visíveis ou públicos em ambientes de produção.
-🚀 Funcionalidades
+## Funcionalidades
 
-    Varredura de Diretórios: Varre caminhos locais em busca de arquivos sensíveis.
+- recebe o diretório a ser analisado pela linha de comando;
+- procura, no primeiro nível da pasta, nomes que contenham `.env` ou `key`;
+- destaca achados no terminal;
+- informa quando o diretório não existe ou quando nenhum risco imediato é encontrado.
 
-    Identificação de Risco: Detecta arquivos de configuração expostos (como .env) e chaves privadas (key).
+> O SecGuard CLI é uma ferramenta de apoio para estudos. Ele não faz busca recursiva, análise de conteúdo, validação de segredos nem substitui scanners profissionais.
 
-    Feedback Visual: Retornos no terminal com cores estruturadas para facilitar a triagem de alertas.
+## Tecnologias
 
-🛠️ Tecnologias Utilizadas
+- TypeScript
+- Node.js
+- Commander.js
 
-    TypeScript — Linguagem base para garantir tipagem estática e segurança no código.
+## Como executar
 
-    Node.js — Ambiente de execução.
+Pré-requisito: Node.js e npm instalados.
 
-    Commander.js — Biblioteca para estruturação de comandos CLI de forma profissional.
+```bash
+npm install
+npx ts-node src/index.ts ./pasta-para-analisar
+```
 
-💼 Contexto Acadêmico/Profissional
+Exemplo de saída:
 
-Este projeto foi desenvolvido como parte dos meus estudos práticos na interseção entre Engenharia de Software e Cibersegurança (Segurança Ofensiva/Red Teaming), demonstrando a aplicação de boas práticas de desenvolvimento aplicadas à automação de rotinas de defesa e auditoria.
+```text
+[+] Iniciando scan de segurança em: /projeto
+[ALERTA] Arquivo sensível exposto encontrado: .env
+```
+
+## Como funciona
+
+O caminho informado é convertido para um caminho absoluto. Se a pasta existir, o programa lê seus itens imediatos e sinaliza nomes compatíveis com os padrões definidos no código.
+
+## Próximas evoluções
+
+- busca recursiva opcional;
+- padrões configuráveis;
+- testes automatizados;
+- níveis de severidade e saída em JSON;
+- respeito a arquivos de exclusão, como `.gitignore`.
+
+## Uso responsável
+
+Execute a ferramenta somente em diretórios próprios ou em ambientes nos quais você tenha autorização. Um alerta indica apenas um nome potencialmente sensível e deve ser validado manualmente.
